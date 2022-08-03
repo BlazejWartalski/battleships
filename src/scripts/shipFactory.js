@@ -1,7 +1,7 @@
-const shipFactory = (length) => {
+const shipFactory = (length, position) => {
     const ship = {};
     ship.size = length;
-    ship.position = [];
+    ship.position = position;
     ship.damage = [];
     ship.isSunk = "afloat";
     ship.takeHit = (hit) => ship.damage.push(hit);
@@ -13,17 +13,35 @@ const shipFactory = (length) => {
             var checkfloat = "afloat"
             return checkfloat
         }
-    }; 
+    };
+    console.log(ship)
     return ship
 }
 
 const fleet = () => {
-    const ships = {};
-    ships.carrier = 1;
-    ships.battleship = 2;
-    ships.destroyer = 3;
-    ships.submarine = 4;
-    ships.patrolBoat = 4;
+    const fleet = {};
+    fleet.carrier = {
+        size : 5,
+        amount : 1
+    };
+    fleet.battleship = {
+        size : 4,
+        amount: 2
+    };
+    fleet.destroyer = {
+        size : 3,
+        amount: 3,
+    };
+    fleet.submarine = {
+        size : 2,
+        amount : 2,
+    };
+    fleet.patrolBoat = {
+        size : 1,
+        amount : 4,
+    };
+
+    return fleet
 }
 // module.exports = shipFactory;
 export {shipFactory , fleet}

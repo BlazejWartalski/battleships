@@ -1,10 +1,8 @@
 import {shipFactory , fleet} from "./scripts/shipFactory.js";
 import {createGameBoard, findLegalSpaces} from "./scripts/gameboard.js";
-const ship2 = shipFactory(3);
+import { initializeGame, receiveAttack, createFleet } from "./scripts/gameSetUp.js"
+var gameboard = createGameBoard();
 
-ship2.checkIfSunk()
-
-createGameBoard();
-console.log(gameBoard);
-
-findLegalSpaces(gameBoard);
+initializeGame();
+receiveAttack();
+createFleet(gameboard);

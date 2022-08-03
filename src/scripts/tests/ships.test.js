@@ -18,6 +18,6 @@ test('check if ship is sunk when length = damage', () => {
 
 test('check if ship takes damage', () => {
     let ship1 = shipFactory(4);
-    ship1.takeHit(2);
-    expect(ship1.damage).toEqual([2]);
+    ship1.takeHit("eh");
+    expect(ship1.damage).toEqual(["eh"]);
 });

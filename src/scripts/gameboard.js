@@ -3,7 +3,6 @@ const gameBoard = [];
 
 const createGameBoard = () => {
     addColumns(gameBoard);
-    console.log(gameBoard);
     return gameBoard
 }
 
@@ -34,7 +33,6 @@ function addBoxes(column, columnNumber) {
 }
 
 function findLegalSpaces(gameBoard) {
-    console.log(gameBoard)
     var legalSpaces = [];
     gameBoard.forEach(column => findEmptySpaces(column, legalSpaces))
     return legalSpaces;
@@ -42,6 +40,7 @@ function findLegalSpaces(gameBoard) {
 
 function findEmptySpaces(column, legalSpaces) {
     column.forEach(box => findEmptySquares(box, legalSpaces))
+
 }
 
 function findEmptySquares(box, legalSpaces) {
