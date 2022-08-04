@@ -4,5 +4,5 @@ import { initializeGame, receiveAttack, createFleet } from "./scripts/gameSetUp.
 var gameboard = createGameBoard();
 
 initializeGame();
-receiveAttack();
 createFleet(gameboard);
+receiveAttack();

@@ -14,7 +14,6 @@ const shipFactory = (length, position) => {
             return checkfloat
         }
     };
-    console.log(ship)
     return ship
 }
 
