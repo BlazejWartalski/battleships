@@ -47,7 +47,6 @@ const fleet = () => {
 
 function createFleet(legalSpaces) {
     var listOfShips = fleet();
-    console.log(listOfShips);
     var playerFleet = [];
     Object.keys(listOfShips).forEach(entry => {
         for(var i = 0; i < listOfShips[entry].amount; i++) {

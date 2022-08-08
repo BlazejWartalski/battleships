@@ -1,16 +1,15 @@
 import { initializeGame, receiveAttack,  } from './gameSetUp.js'
 import {shipFactory , fleet, createFleet} from "./shipFactory.js"
 
-const playerFactory = (humanOrAi, legalSpaces) => {
+const playerFactory = (humanOrAi, legalSpaces, legalSpacesForHits) => {
     const player = [];
     player.aiOrHuman = humanOrAi;
-    player.legalSpaces = [];
+    player.legalSpaces = legalSpaces;
     player.gameBoard = [];
-    console.log(createFleet(legalSpaces))
-    player.fleet = [createFleet(legalSpaces)];
+    player.fleet = createFleet(legalSpaces);
+    player.sunkShips = [];
     player.afloatShips = [];
-    player.availableMoves = [];
-console.log(player);
+    player.availableMoves = legalSpacesForHits;
     return player
 }
 

@@ -1,30 +1,33 @@
-import { random } from "lodash";
-import { forEach } from "lodash";
-import {createGameBoard, findLegalSpaces, receiveAttack} from "./gameboard.js";
-import {shipFactory , fleet} from "./shipFactory.js"
+// import { random } from "lodash";
+// import { forEach } from "lodash";
+import {createGameBoard, findLegalSpaces} from "./gameboard.js";
+// import {shipFactory , fleet} from "./shipFactory.js"
 import playerFactory from "./playerFactory.js"
-
-var gameboard = createGameBoard();
-
-var legalSpaces = findLegalSpaces(gameboard);
-console.log(legalSpaces);
+import {receiveAttack, checkFleet} from "./attackLogic.js";
 
 
-var legalSpacesForHits = findLegalSpaces(gameboard);
-console.log(legalSpacesForHits)
-var arrayLength = legalSpaces.length;
-var randomNumber = Math.floor(Math.random() * arrayLength);
-var playerFleet = [];
-
-
-function initializeGame() {
-    var randomCoordinates = legalSpaces[randomNumber][0]
+function initializeGame(human, ai) {
+    aiMove(human, ai);
 }
 
-var human = playerFactory("human", legalSpaces);
-var ai = playerFactory("ai", legalSpaces);
+function aiMove(human, ai) {
+    var attackedBox = Math.floor(Math.random() * human.availableMoves.length);
+    receiveAttack(attackedBox, human);
+    if (checkFleet(human) === true) {
+        return console.log("robot wins")
+    };
+    playerMove(human, ai);
+}
 
-console.log(human)
-console.log(ai)
+function playerMove(human, ai) {
+    var playerInput = Math.floor(Math.random() * ai.availableMoves.length);
+    receiveAttack(playerInput, ai);
+    if (checkFleet(ai) === true) {
+        return console.log("human wins");
+    };
+    aiMove(human, ai);
+}
+
+
 
 export default initializeGame
