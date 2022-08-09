@@ -1,4 +1,3 @@
-import { initializeGame, receiveAttack,  } from './gameSetUp.js'
 import {shipFactory , fleet, createFleet} from "./shipFactory.js"
 
 const playerFactory = (humanOrAi, legalSpaces, legalSpacesForHits) => {

@@ -1,7 +1,5 @@
 function receiveAttack(attackedBox, player) {
-    console.log(player)
-    console.log(player.availableMoves.length)
-    console.log(player.availableMoves[attackedBox])
+
     const boxHit = player.availableMoves[attackedBox];
     boxHit[2] = "hit"
     if (boxHit[1] == "occupied" ) {
