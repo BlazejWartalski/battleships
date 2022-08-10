@@ -18,13 +18,10 @@ background-color: rgb(105, 73, 33);
 
 #mainBox {
 background-color: rgb(119, 42, 192);
-width: 100%;
-height: 100%;
+display: grid;
 }
 
 #gameScreen {
-    width: 100%;
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 10fr 1fr;
@@ -32,6 +29,8 @@ height: 100%;
 
 #leftPlayer {
 background-color: rgb(163, 163, 85);
+display: grid;
+grid-template-rows: 10fr 1fr;
 }
 
 .checkBoard {
@@ -42,16 +41,21 @@ background-color: rgb(163, 163, 85);
     margin: 5px;
 }
 .tile {
-    margin: 15px;
+    display: grid;
+    margin: 0px;
     border: 1px;
     border-style: solid;
-    height: 100%;
-    width: 100%;
     /* color: rgba(255, 196, 196, 0) !important; */
+}
+
+.occupied {
+    background-color: azure;
 }
 
 #rightPlayer {
 background-color: rgb(131, 123, 114);
+display: grid;
+grid-template-rows: 10fr 1fr;
 }
 
 #buttons {

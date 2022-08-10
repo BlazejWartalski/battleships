@@ -1,5 +1,4 @@
-import {createGameBoard, findLegalSpaces} from "./gameboard.js";
-
+import _ from 'lodash';
 
 const shipFactory = (length, position) => {
     const ship = {};
@@ -21,10 +20,10 @@ const shipFactory = (length, position) => {
 
 const fleet = () => {
     const fleet = {};
-    fleet.carrier = {
-        size : 5,
-        amount : 1
-    };
+    // fleet.carrier = {
+    //     size : 5,
+    //     amount : 1
+    // };
     fleet.battleship = {
         size : 4,
         amount: 2
@@ -48,14 +47,22 @@ const fleet = () => {
 function createFleet(legalSpaces) {
     var listOfShips = fleet();
     var playerFleet = [];
+    var freeSpace = [];
+
+    for (var u = 0; u < legalSpaces.length; u++) {
+        freeSpace.push(legalSpaces[u])
+    }
+
     Object.keys(listOfShips).forEach(entry => {
         for(var i = 0; i < listOfShips[entry].amount; i++) {
             var coordinates = [];
             for (var z = 0; z < listOfShips[entry].size; z++) {
 
-                var randomNumber = Math.floor(Math.random() * legalSpaces.length);
-                var coordinate = legalSpaces[randomNumber][0]
-                legalSpaces[randomNumber][1] = "occupied"
+                var randomNumber = Math.floor(Math.random() * freeSpace.length);
+                var coordinate = freeSpace[randomNumber][0]
+                freeSpace[randomNumber][1] = "occupied"
+                freeSpace.splice(randomNumber, 1);
+
                 coordinates.push(coordinate)
             }
             var ship = shipFactory(listOfShips[entry].size, coordinates)

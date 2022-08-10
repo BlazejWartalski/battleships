@@ -19,28 +19,27 @@ function renderThePage() {
             leftPlayer.setAttribute("id","leftPlayer");
             gameScreen.appendChild(leftPlayer);
 
-                const leftPlayerShipsRemaining = document.createElement("div");
-                leftPlayerShipsRemaining.setAttribute("id","leftShipCount");
-                leftPlayer.appendChild(leftPlayerShipsRemaining);
-
                 const leftPlayerBoard = document.createElement("div");
                 leftPlayerBoard.setAttribute("id","human");
                 leftPlayerBoard.classList.add("checkBoard");
                 leftPlayer.appendChild(leftPlayerBoard);
 
+                const leftPlayerShipsRemaining = document.createElement("div");
+                leftPlayerShipsRemaining.setAttribute("id","leftShipCount");
+                leftPlayer.appendChild(leftPlayerShipsRemaining);
+
             const rightPlayer = document.createElement("div");
             rightPlayer.setAttribute("id","rightPlayer");
             gameScreen.appendChild(rightPlayer);
-
-                const rightPlayerShipsRemaining = document.createElement("div");
-                rightPlayerShipsRemaining.setAttribute("id","rightShipCount");
-                rightPlayer.appendChild(rightPlayerShipsRemaining);
 
                 const rightPlayerBoard = document.createElement("div");
                 rightPlayerBoard.setAttribute("id","ai");
                 rightPlayerBoard.classList.add("checkBoard");
                 rightPlayer.appendChild(rightPlayerBoard);
 
+                const rightPlayerShipsRemaining = document.createElement("div");
+                rightPlayerShipsRemaining.setAttribute("id","rightShipCount");
+                rightPlayer.appendChild(rightPlayerShipsRemaining);
             const gameControlButtons = document.createElement("div");
             gameControlButtons.setAttribute("id","buttons");
             gameScreen.appendChild(gameControlButtons);
@@ -57,9 +56,36 @@ function renderTheGameboard(player) {
     const leftPlayer = document.getElementById(player.aiOrHuman)
     for (var i = 0; i < player.legalSpaces.length; i++) {
         const tile = document.createElement("div");
-        tile.classList.add("tile");
-        tile.setAttribute("id",[i]);
+        tile.classList.add("tile", player.legalSpaces[i][2], player.aiOrHuman)
+        tile.setAttribute("id",player.legalSpaces[i][0]+player.aiOrHuman);
         leftPlayer.appendChild(tile);
     }
+    renderTheFleet(player);
+    addTileFunctionality(player.aiOrHuman);
+}
+function renderTheFleet(player) {
+    var fleetCoordinates = [];
+    for (var z = 0; z < player.fleet.length; z++) {
+        for (var y = 0; y < player.fleet[z].position.length; y++) {
+            fleetCoordinates.push(player.fleet[z].position[y])
+        }
+    }
+    console.log(fleetCoordinates)
+    for (var x = 0; x < fleetCoordinates.length; x++) {
+        console.log(fleetCoordinates[x])
+        var occupiedTile = document.getElementById(fleetCoordinates[x]+player.aiOrHuman)
+        occupiedTile.classList.add("occupied")
+    }
+}
+
+function addTileFunctionality(player) {
+    const tiles = document.getElementsByClassName(player)
+    for (let item of tiles) {
+        item.addEventListener("click", getTile)
+    }
+}
+
+function getTile() {
+    console.log(this);
 }
 export { renderThePage, renderTheGameboard }
