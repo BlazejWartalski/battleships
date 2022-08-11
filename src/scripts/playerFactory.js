@@ -9,6 +9,7 @@ const playerFactory = (humanOrAi, legalSpaces, legalSpacesForHits) => {
     player.sunkShips = [];
     player.afloatShips = [];
     player.availableMoves = legalSpacesForHits;
+    console.log(player);
     return player
 }
 

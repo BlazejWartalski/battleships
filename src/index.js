@@ -7,13 +7,19 @@ import addContentToHeader from "./components/header.js";
 import css from "./style.css"
 
 var gameboard = createGameBoard();
-console.log(gameboard);
+var gameboard2 = createGameBoard();
+
 var legalSpaces = findLegalSpaces(gameboard);
+var legalSpacesP2 = findLegalSpaces(gameboard2);
+
 var legalSpacesForHits = findLegalSpaces(gameboard);
-var legalSpacesForHits2 = findLegalSpaces(gameboard);
+var legalSpacesForHits2 = findLegalSpaces(gameboard2);
 
 var human = playerFactory("human", legalSpaces, legalSpacesForHits);
-var ai = playerFactory("ai", legalSpaces, legalSpacesForHits2);
+var ai = playerFactory("ai", legalSpacesP2, legalSpacesForHits2);
+
+console.log(human)
+console.log(ai);
 
 renderThePage();
 addContentToHeader();
@@ -21,6 +27,3 @@ addContentToFooter();
 renderTheGameboard(human);
 renderTheGameboard(ai);
 initializeGame(human, ai);
-
-console.log(human)
-console.log(ai)

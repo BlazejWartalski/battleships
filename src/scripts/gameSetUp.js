@@ -9,7 +9,7 @@ function aiMove(human, ai) {
     var attackedBox = Math.floor(Math.random() * human.availableMoves.length);
     receiveAttack(attackedBox, human);
     if (checkFleet(human) === true) {
-        return console.log("robot wins")
+        return console.log("ai wins")
     };
     playerMove(human, ai);
 }

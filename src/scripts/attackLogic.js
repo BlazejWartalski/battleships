@@ -37,7 +37,7 @@ function findDamagedShip2(ship, square, playerFleet, player) {
 }
 
 function checkFleet(player) {
-    if (player.sunkShips.length == "12") {
+    if (player.sunkShips.length == player.fleet.length) {
         return true
         }
     else {

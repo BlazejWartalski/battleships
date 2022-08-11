@@ -51,8 +51,6 @@ function renderThePage() {
 }
 
 function renderTheGameboard(player) {
-    console.log(player.aiOrHuman);
-    console.log(player.legalSpaces);
     const leftPlayer = document.getElementById(player.aiOrHuman)
     for (var i = 0; i < player.legalSpaces.length; i++) {
         const tile = document.createElement("div");
@@ -70,9 +68,7 @@ function renderTheFleet(player) {
             fleetCoordinates.push(player.fleet[z].position[y])
         }
     }
-    console.log(fleetCoordinates)
     for (var x = 0; x < fleetCoordinates.length; x++) {
-        console.log(fleetCoordinates[x])
         var occupiedTile = document.getElementById(fleetCoordinates[x]+player.aiOrHuman)
         occupiedTile.classList.add("occupied")
     }
