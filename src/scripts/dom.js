@@ -59,7 +59,7 @@ function renderTheGameboard(player) {
         leftPlayer.appendChild(tile);
     }
     renderTheFleet(player);
-    addTileFunctionality(player.aiOrHuman);
+    addTileFunctionality(player);
 }
 function renderTheFleet(player) {
     var fleetCoordinates = [];
@@ -75,13 +75,18 @@ function renderTheFleet(player) {
 }
 
 function addTileFunctionality(player) {
-    const tiles = document.getElementsByClassName(player)
+    const tiles = document.getElementsByClassName("ai")
     for (let item of tiles) {
+        // item.addEventListener("click", function() {
+        //     getTile(player)
+        // })
         item.addEventListener("click", getTile)
     }
 }
 
 function getTile() {
-    console.log(this);
+    console.log(this)
+    console.log(this.attributes[1]);
+    console.log(this.attributes.class);
 }
 export { renderThePage, renderTheGameboard }
