@@ -1,4 +1,4 @@
-import initializeGame from "./scripts/gameSetUp.js"
+import {playRound, addTileFunctionality} from "./scripts/gameSetUp.js"
 import {createGameBoard, findLegalSpaces, receiveAttack} from "./scripts/gameboard.js";
 import playerFactory from "./scripts/playerFactory.js"
 import {renderThePage, renderTheGameboard} from "./scripts/dom.js";
@@ -26,4 +26,5 @@ addContentToHeader();
 addContentToFooter();
 renderTheGameboard(human);
 renderTheGameboard(ai);
-initializeGame(human, ai);
+playRound(human, ai);
+addTileFunctionality(ai);
