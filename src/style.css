@@ -67,3 +67,15 @@ margin: 10px;
 #bottomBox {
 background-color: brown;
 }
+
+.ai {
+    background-color: aquamarine;
+}
+
+.hit {
+    background-color: black;
+}
+
+.hit.occupied {
+    background-color: red;
+}

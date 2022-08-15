@@ -27,4 +27,4 @@ addContentToFooter();
 renderTheGameboard(human);
 renderTheGameboard(ai);
 playRound(human, ai);
-addTileFunctionality(ai);
+addTileFunctionality(human, ai);

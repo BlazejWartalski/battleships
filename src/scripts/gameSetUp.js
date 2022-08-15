@@ -6,15 +6,30 @@ var currentPlayer = "human";
 
 
 function playRound(human, ai) {
+    if (checkFleet(ai) === true) {
+        return alert("human wins");
+    }
+    if (checkFleet(human) === true) {
+        return alert("ai wins")
+    };
     if (currentPlayer === "human") {
-        playerMove(human, ai);
+        console.log("czlowiek")
     } else if (currentPlayer === "ai") {
+        console.log("ai")
         aiMove(human, ai);
     }
 }
 
 function aiMove(human, ai) {
     var attackedBox = Math.floor(Math.random() * human.availableMoves.length);
+    console.log(human.availableMoves[attackedBox][0])
+    var humanTile = human.availableMoves[attackedBox][0] + "human";
+    console.log(humanTile)
+    const humanTiles = document.getElementById(humanTile)
+    humanTiles.classList.remove("notHit")
+    humanTiles.classList.add("hit")
+    console.log(humanTiles);
+    console.log(attackedBox)
     receiveAttack(attackedBox, human);
     if (checkFleet(human) === true) {
         return console.log("ai wins")
@@ -23,55 +38,25 @@ function aiMove(human, ai) {
     playRound(human, ai) }
 }
 
-function playerMove(human, ai) {
-    // var playerInput = Math.floor(Math.random() * ai.availableMoves.length);
-    var tileId = "";
-    
 
-    // receiveAttack(playerInput, ai);
-    if (checkFleet(ai) === true) {
-        return console.log("human wins");
-    } else {
-    currentPlayer = "ai"
-    playRound(human, ai)
-    }
-}
-
-function addTileFunctionality(ai) {
-    console.log(ai);
+function addTileFunctionality(human, ai) {
     var tiles = document.querySelectorAll(".ai.notHit")
     console.log(tiles)
     tiles.forEach(tile => {
         tile.addEventListener("click", event => {
-            console.log("hiya")
+            event.target.classList.remove("notHit")
+            event.target.classList.add("hit")
             var buttonId = event.target.id;
             if (buttonId.length == 4) {
                 buttonId = buttonId.slice(0,2)
             } else if (buttonId.length == 5) {
                 buttonId = buttonId.slice(0,3)
             }
-            console.log(buttonId);
             receiveAttack(buttonId,ai);
+            currentPlayer = "ai"
+            playRound(human, ai)
         });
     });
-    // for (let item of tiles) {
-    //     item.addEventListener("click", getTile(ai))
-    // }
 }
 
-function getTile(ai) {
-    var buttonId = this.attributes[1].value;
-    console.log(this);
-    console.log(ai)
-    this.classList.remove("notHit")
-    this.classList.add("hit");
-    if (buttonId.length == 4) {
-        buttonId = buttonId.slice(0,2)
-    } else if (buttonId.length == 5) {
-        buttonId = buttonId.slice(0,3)
-    }
-    console.log(buttonId);
-    var player = "ewe";
-    // receiveAttack(buttonId, player)
-}
 export {playRound, addTileFunctionality}
